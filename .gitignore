@@ -6,3 +6,5 @@ eshell/
 init.el~
 org-journal.cache
 projectile-bookmarks.eld
+projectile.cache
+transient/

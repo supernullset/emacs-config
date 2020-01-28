@@ -2,7 +2,6 @@
 (setq package-enable-at-startup t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-
 (package-initialize)
 (package-refresh-contents)
 
@@ -17,6 +16,20 @@
   :init-value nil
   :lighter " SNS "
   (progn
+
+;;    (defun ap/garbage-collect ()
+;;      "Run `garbage-collect' and print stats about memory usage."
+;;      (interactive)
+;;      (message (cl-loop for (type size used free) in (garbage-collect)
+;;                        for used = (* used size)
+;;                        for free = (* (or free 0) size)
+;;                        for total = (file-size-human-readable (+ used free))
+;;                        for used = (file-size-human-readable used)
+;;                        for free = (file-size-human-readable free)
+;;                        concat (format "%s: %s + %s = %s\n" type used free total))))
+;;    (ap/garbage-collect)
+
+
     ;;backup config
     (setq backup-directory-alist `(("." . "~/.saves")))
     (setq backup-by-copying t)
@@ -24,14 +37,7 @@
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
-
-    (defun linum-format-func (line)
-      ;; set the format for line numbering
-      (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-        (propertize (format (format "%%%dd " w) line) 'face 'linum)))
-
-    (setq linum-format 'linum-format-func)
-    (global-linum-mode 1)
+    (display-line-numbers-mode -1)
 
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -41,10 +47,12 @@
     (ido-mode 0)
     (menu-bar-mode -1)
 
+    (setq x-wait-for-event-timeout nil)
+
     (put 'narrow-to-region 'disabled nil)
     (setq-default indent-tabs-mode nil)
     (setq-default current-fill-column 80)
-    (load-theme 'tangotango t)
+;;     (load-theme 'tangotango t)
     ))
 
 (define-globalized-minor-mode global-supernullset-mode supernullset-mode (lambda () (supernullset-mode)))
@@ -52,8 +60,6 @@
 (use-package tangotango-theme
   :ensure t)
 
-;; I really need to understand this more
-;;(add-to-list 'load-path "~/.emacs.d/helm")
 (use-package projectile
   :ensure t
   :config
@@ -69,7 +75,7 @@
 
 (use-package helm
   :ensure t
-  :bind (("C-x C-m" . 'helm-M-x)
+  :bind (("C-x C-m"    . 'helm-M-x)
          ("C-x m"      . 'helm-M-x)
          ("C-c C-m"    . 'helm-M-x)
          ("M-y"        . 'helm-show-kill-ring)
