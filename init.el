@@ -19,6 +19,9 @@
     (setq backup-directory-alist `(("." . "~/.saves")))
     (setq backup-by-copying t)
 
+    (menu-bar-mode -1)
+    (toggle-scroll-bar -1)
+
     (defun linum-format-func (line)
       ;; set the format for line numbering
       (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
