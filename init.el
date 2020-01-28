@@ -1,6 +1,8 @@
 (require 'package)
 (setq package-enable-at-startup t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+
 (package-initialize)
 (package-refresh-contents)
 
@@ -20,6 +22,7 @@
     (setq backup-by-copying t)
 
     (menu-bar-mode -1)
+    (tool-bar-mode -1)
     (toggle-scroll-bar -1)
 
     (defun linum-format-func (line)
