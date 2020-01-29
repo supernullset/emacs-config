@@ -1,9 +1,12 @@
 (require 'package)
 (setq package-enable-at-startup t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
 (package-initialize)
-(package-refresh-contents)
+
+(if (not (file-exists-p "./elpa/"))
+    ;; assume that this is the first run
+    (progn
+      (package-refresh-contents)))
 
 (package-install 'use-package)
 
@@ -38,6 +41,7 @@
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
     (display-line-numbers-mode -1)
+    (setq inhibit-startup-screen t)
 
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -52,6 +56,10 @@
     (put 'narrow-to-region 'disabled nil)
     (setq-default indent-tabs-mode nil)
     (setq-default current-fill-column 80)
+    (setq org-agenda-file-regexp "\\`[^.].*\\.org\\'\\|\\`[0-9]+\\'")
+    ;; figure out how to get this in org mode
+    (add-to-list 'auto-mode-alist '("\\`[0-9]+\\'" . org-mode))
+
 ;;     (load-theme 'tangotango t)
     ))
 
@@ -151,7 +159,9 @@
          ("C-c b" . 'org-iswitchb)
          ("C-c t" . 'org-todo)
          )
-  :config (progn (setq org-log-done 'time)))
+  :config (progn
+
+            (setq org-log-done 'time)))
 
 (use-package smartparens
   :ensure t
@@ -180,7 +190,8 @@
 
 (use-package org-journal
   :ensure t
-  :config (progn (setq org-journal-dir "~/HeartOfGold/SynologyDrive/org-journal")))
+  :config (progn
+            (setq org-journal-dir "~/HeartOfGold/SynologyDrive/org-journal")))
 
 (use-package dired
   :config (progn
