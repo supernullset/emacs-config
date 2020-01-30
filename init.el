@@ -123,20 +123,22 @@
   :config (progn
             (setq sml/no-confirm-load-theme t)))
 
+
+
 (use-package rainbow-delimiters
   :ensure t
 
   :config (progn
             ;; enable rainbow delimiters
-            (setq rainbow-delimiters-depth-1-face "color-196")
-            (setq rainbow-delimiters-depth-2-face "color-58")
-            (setq rainbow-delimiters-depth-3-face "color-70")
-            (setq rainbow-delimiters-depth-4-face "color-26")
-            (setq rainbow-delimiters-depth-5-face "color-211")
-            (setq rainbow-delimiters-depth-6-face "color-220")
-            (setq rainbow-delimiters-depth-7-face "color-225")
-            (setq rainbow-delimiters-depth-8-face "color-22")
-            (setq rainbow-delimiters-depth-9-face "color-130")
+            (set-face-attribute 'rainbow-delimiters-depth-1-face nil :foreground "#976008")
+            (set-face-attribute 'rainbow-delimiters-depth-2-face nil :foreground "#7F9208")
+            (set-face-attribute 'rainbow-delimiters-depth-3-face nil :foreground "#FFE800")
+            (set-face-attribute 'rainbow-delimiters-depth-4-face nil :foreground "#055E54")
+            (set-face-attribute 'rainbow-delimiters-depth-5-face nil :foreground "#EB9202")
+            (set-face-attribute 'rainbow-delimiters-depth-6-face nil :foreground "#C4E401")
+            (set-face-attribute 'rainbow-delimiters-depth-7-face nil :foreground "#B1017C")
+            (set-face-attribute 'rainbow-delimiters-depth-8-face nil :foreground "#019282")
+            (set-face-attribute 'rainbow-delimiters-depth-9-face nil :foreground "#BA770B")
             ))
 
 (use-package markdown-mode
