@@ -232,7 +232,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-descbinds dockerfile-mode yaml-mode wgrep-ag wrap-region use-package typescript-mode terraform-mode smartparens smart-mode-line rainbow-mode rainbow-delimiters racket-mode org-journal markdown-mode magit helm-projectile haskell-mode erlang elm-mode elixir-mode company column-enforce-mode ag))))
+    (go helm-descbinds dockerfile-mode yaml-mode wgrep-ag wrap-region use-package typescript-mode terraform-mode smartparens smart-mode-line rainbow-mode rainbow-delimiters racket-mode org-journal markdown-mode magit helm-projectile haskell-mode erlang elm-mode elixir-mode company column-enforce-mode ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
